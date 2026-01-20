@@ -24,9 +24,24 @@
             .text-stroke { -webkit-text-stroke: 3px white; }
             .text-stroke-yellow { -webkit-text-stroke: 3px #FBBF24; }
         }
+
+        /* Estilos del botón ScrollTop */
+        #scroll-top-btn {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
+
+<button id="scroll-top-btn" class="fixed bottom-6 right-6 z-[100] bg-yellow-comunidad text-black w-12 h-12 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
 <header class="relative min-h-[600px] md:h-[650px] flex items-center bg-black overflow-hidden">
     <img src="banner.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60" alt="Feria Villa Ángela">
@@ -63,29 +78,27 @@
     </div>
 </header>
 
-    <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 text-center max-w-3xl">
-            <div class="mb-6 flex justify-center">
-                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-lightbulb text-yellow-500 text-3xl"></i>
-                </div>
+<section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center max-w-3xl">
+        <div class="mb-6 flex justify-center">
+            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-lightbulb text-yellow-500 text-3xl"></i>
             </div>
-            <h2 class="text-2xl md:text-3xl font-black mb-6">¿Qué es la Comunidad Emprendedora?</h2>
-            <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-             Descripción de qué es...
-            </p>
         </div>
-    </section>
+        <h2 class="text-2xl md:text-3xl font-black mb-6">¿Qué es la Comunidad Emprendedora?</h2>
+        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+         Es un espacio diseñado para potenciar el talento local de Villa Ángela, brindando herramientas de visibilidad a cada proyecto que forma parte de nuestra ciudad.
+        </p>
+    </div>
+</section>
 
-  <section class="py-12 md:py-20 bg-slate-50 overflow-hidden">
+<section class="py-12 md:py-20 bg-slate-50 overflow-hidden">
     <div class="container mx-auto px-6">
         <h2 class="text-2xl md:text-3xl font-black text-center mb-10">Galería de fotos</h2>
-        
         <div class="relative flex items-center group">
             <button id="gallery-prev" class="hidden md:flex absolute -left-2 md:left-4 z-10 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
                 <i class="fas fa-chevron-left"></i>
             </button>
-
             <div id="gallery-container" class="flex overflow-x-auto gap-4 md:gap-6 pb-6 no-scrollbar snap-x px-2">
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
                     <img src="foto1.jpeg" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 1">
@@ -99,21 +112,16 @@
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
                     <img src="galeria1.webp" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 4">
                 </div>
-                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
-                    <img src="galeria2.webp" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 4">
-                </div>
             </div>
-
             <button id="gallery-next" class="hidden md:flex absolute -right-2 md:right-4 z-10 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
-        
         <p class="md:hidden text-center text-slate-400 text-xs mt-2 italic">← Desliza para ver más fotos →</p>
     </div>
 </section>
 
-   <section id="seccion-feria" class="py-16 md:py-24 bg-white">
+<section id="seccion-feria" class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-6">
         <h2 class="text-2xl md:text-3xl font-black text-center mb-12">Próximos eventos</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
@@ -129,7 +137,7 @@
                         <p><i class="fas fa-clock text-yellow-500 mr-2 w-5"></i> Desde las 19 horas</p>
                         <p><i class="fas fa-map-marker-alt text-yellow-500 mr-2 w-5"></i> Parque del Centenario - Villa Ángela - Chaco.</p>
                     </div>
-                    <button onclick="abrirMapa('https://www.google.com/maps/embed?pb=!4v1767928516441!6m8!1m7!1snVmC1-hEN2Ut5HWdaPQsyA!2m2!1d-27.57967986303713!2d-60.71362823075314!3f186.64727402669106!4f-4.034187814481115!5f0.7820865974627469...')" 
+                    <button onclick="abrirMapa('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.662241517375!2d-60.7135!3d-27.46!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDI3JzM2LjAiUyA2MMKwNDInNDguNiJX!5e0!3m2!1ses-419!2sar!4v1700000000000')" 
                             class="w-full bg-slate-100 py-3 rounded-xl font-bold text-sm hover:bg-yellow-comunidad transition flex items-center justify-center gap-2">
                         <i class="fas fa-location-dot"></i> Ver ubicación
                     </button>
@@ -139,154 +147,173 @@
     </div>
 </section>
 
-    <section class="py-16 md:py-24 bg-slate-50 overflow-hidden text-center">
-        <div class="container mx-auto px-6">
-            <h2 class="text-2xl md:text-3xl font-black mb-12">Emprendedores que participan</h2>
-            <div class="relative flex items-center group">
-                <button id="prev-btn" class="hidden md:flex absolute -left-2 z-10 bg-yellow-comunidad w-12 h-12 rounded-full items-center justify-center shadow-xl hover:scale-110 transition">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+<section class="py-16 md:py-24 bg-slate-50 overflow-hidden text-center">
+    <div class="container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-black mb-12">Emprendedores que participan</h2>
+        <div class="relative flex items-center">
+            <div id="carousel-container" class="flex overflow-x-auto gap-6 md:gap-10 pb-10 no-scrollbar pointer-events-none px-4 md:px-10">
                 
-                <div id="carousel-container" class="flex overflow-x-auto gap-6 md:gap-10 pb-10 no-scrollbar snap-x px-4 md:px-10">
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
+                <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Taby MakeUp">
                     </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
-                    </div>
-                    <div class="flex-none w-36 md:w-40 snap-center group/item">
-                        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-slate-100 p-1 mb-4 group-hover/item:scale-110 transition-transform shadow-md">
-                            <img src="perfil2.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Emprendedor">
-                        </div>
-                        <p class="font-bold text-base md:text-lg">Otro emprendimientoi..</p>
-                        <span class="text-xs uppercase tracking-widest text-slate-400">Rubro</span>
-                    </div>
+                    <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
                 </div>
 
-                <button id="next-btn" class="hidden md:flex absolute -right-2 z-10 bg-yellow-comunidad w-12 h-12 rounded-full items-center justify-center shadow-xl hover:scale-110 transition">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            <p class="md:hidden text-slate-400 text-xs mt-2 italic">← Desliza para ver más →</p>
-        </div>
+                <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+
+                
+                <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="logo-taby.jpg" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Taby MakeUp">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Taby MakeUp</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Maquillaje</span>
+                </div>
+
+                  <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+                 <div class="flex-none w-36 md:w-40">
+                    <div class="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full border-4 border-yellow-comunidad p-1 mb-4 shadow-md">
+                        <img src="bannerlogo.png" class="w-full h-full object-cover rounded-full bg-slate-100" alt="Samadhi Store">
+                    </div>
+                    <p class="font-bold text-base md:text-lg">Samadhi Store</p>
+                    <span class="text-xs uppercase tracking-widest text-slate-400">Tienda</span>
+                </div>
+            </div> </div> </div> 
     </section>
 
-    <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-2xl md:text-3xl font-black mb-16 text-center">Cómo participar</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-comunidad rounded-3xl flex items-center justify-center mb-6 rotate-12 shadow-lg">
-                        <span class="text-2xl md:text-3xl font-black -rotate-12">1</span>
+<section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-black mb-16">Lo que dicen nuestros emprendedores</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
+            <div class="bg-slate-50 p-8 rounded-[2rem] shadow-sm relative italic text-slate-600">
+                <i class="fas fa-quote-left text-yellow-400 text-3xl absolute top-6 left-6 opacity-30"></i>
+                <p class="relative z-10 mb-6 mt-4">"Gracias a la Comunidad Emprendedora mi marca Taby Makeup logró llegar a mucha más gente en Villa Ángela."</p>
+                <div class="flex items-center justify-center gap-3 not-italic">
+                    <img src="logo-taby.jpg" class="w-10 h-10 rounded-full border-2 border-yellow-comunidad" alt="Testimonio">
+                    <div class="text-left leading-tight">
+                        <p class="font-bold text-black text-sm">Taby Makeup</p>
+                        <p class="text-xs text-slate-400">Maquillaje Profesional</p>
                     </div>
-                    <h3 class="font-bold text-xl mb-3">Inscripción</h3>
-                    <p class="text-slate-500">Completa tus datos en el formulario.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-comunidad rounded-3xl flex items-center justify-center mb-6 shadow-lg">
-                        <span class="text-2xl md:text-3xl font-black">2</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Validación</h3>
-                    <p class="text-slate-500">Obtenemos la inscripción.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-yellow-comunidad rounded-3xl flex items-center justify-center mb-6 -rotate-12 shadow-lg">
-                        <span class="text-2xl md:text-3xl font-black rotate-12">3</span>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">¡A vender!</h3>
-                    <p class="text-slate-500">El dia Domingo tenés que ir sin falta.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="inscripcion" class="py-16 md:py-24 bg-slate-50">
+<section id="inscripcion" class="py-16 md:py-24 bg-slate-50">
     <div class="container mx-auto px-4 sm:px-6 flex justify-center">
-        <div class="bg-yellow-comunidad p-6 md:p-12 rounded-[2rem] shadow-2xl w-full max-w-2xl relative overflow-hidden">
-            <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400 rounded-full opacity-50"></div>
+        <div class="bg-yellow-comunidad p-6 md:p-12 rounded-[2.5rem] shadow-2xl w-full max-w-3xl relative overflow-hidden">
             
-            <h2 class="text-2xl md:text-3xl font-black text-center mb-10 relative z-10">Inscripción</h2>
-            
-            <form id="form-inscripcion" class="space-y-4 md:space-y-5 relative z-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                    <input type="text" name="nombre" placeholder="Nombre" required 
-                           class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-                    <input type="text" name="apellido" placeholder="Apellido" required 
-                           class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+            <div class="relative z-10 mb-10 text-center">
+                <h2 class="text-3xl md:text-4xl font-black mb-4">¡Inscribite ahora!</h2>
+                <p class="text-black/80 font-medium italic">"Hola a la Comunidad de emprendedores más grande, más bella y copada del Chaco"</p>
+            </div>
+
+            <div class="relative z-10 bg-white/40 backdrop-blur-sm rounded-3xl p-6 mb-10 border border-white/20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
+                    <div class="bg-white/60 p-3 rounded-2xl">
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Armado</p>
+                        <p class="font-black text-lg">17:30 HS</p>
+                    </div>
+                    <div class="bg-black text-white p-3 rounded-2xl shadow-lg transform md:scale-110">
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Apertura</p>
+                        <p class="font-black text-lg text-yellow-comunidad">19:00 HS</p>
+                    </div>
+                    <div class="bg-white/60 p-3 rounded-2xl">
+                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Cierre</p>
+                        <p class="font-black text-lg">22:30 HS</p>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                    <input type="number" name="dni" placeholder="DNI (sin puntos)" required 
-                           class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-                    <input type="tel" name="celular" placeholder="Número de celular" required 
-                           class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                <div class="space-y-4 text-sm md:text-base text-slate-900">
+                    <p class="flex gap-3 leading-tight"><i class="fas fa-map-marker-alt mt-1"></i> <strong>Parque del Centenario:</strong> Nos acomodamos por llegada con respeto. ¡Nadie tiene lugar predeterminado!</p>
+                    <p class="flex gap-3 leading-tight"><i class="fas fa-chair mt-1"></i> <strong>Artesanos:</strong> Deben llevar su propia mesa, sillas y todo lo necesario para su stand.</p>
+                    <p class="flex gap-3 leading-tight"><i class="fas fa-bolt mt-1"></i> <strong>Electricidad:</strong> Si necesitás energía, traé un alargue de más de 20 metros (cable taller 4mm).</p>
+                    
+                    <div class="bg-red-500/10 border-l-4 border-red-600 p-3 rounded-r-xl">
+                        <p class="font-bold text-red-900 leading-tight">IMPORTANTE: No se permite reventa de ropa, productos industriales o de cartilla. Buscamos valor agregado propio.</p>
+                    </div>
+
+                    <p class="flex gap-3 leading-tight"><i class="fas fa-utensils mt-1"></i> <strong>Gastronómicos:</strong> Libreta sanitaria al día y medidas de higiene obligatorias. Se controlará este requisito.</p>
                 </div>
+            </div>
+            
+            <form id="form-inscripcion" class="space-y-4 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="nombre" placeholder="Nombre" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                    <input type="text" name="apellido" placeholder="Apellido" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="number" name="dni" placeholder="DNI (sin puntos)" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                    <input type="tel" name="celular" placeholder="Número de celular" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                </div>
+                <input type="text" name="emprendimiento" placeholder="Nombre del emprendimiento" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                <textarea name="descripcion" placeholder="¿Qué productos o servicios ofreces?" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none h-32 focus:ring-2 focus:ring-black/10 transition"></textarea>
+                
+                <label class="flex items-center gap-3 cursor-pointer p-2">
+                    <input type="checkbox" required class="w-5 h-5 accent-black">
+                    <span class="text-xs md:text-sm font-bold opacity-80 uppercase tracking-tighter">He leído y acepto los horarios y requisitos de la feria.</span>
+                </label>
 
-                <input type="text" name="emprendimiento" placeholder="Nombre del emprendimiento" required 
-                       class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-
-                <textarea name="descripcion" placeholder="¿Qué productos o servicios ofreces?" required 
-                          class="w-full p-4 rounded-xl md:rounded-2xl border-none shadow-inner outline-none h-32 focus:ring-2 focus:ring-black/10 transition"></textarea>
-
-                <button type="submit" 
-                        class="w-full bg-black text-white font-bold py-4 md:py-5 rounded-xl md:rounded-2xl hover:bg-slate-800 transition-all transform active:scale-95 shadow-xl uppercase tracking-widest mt-2">
+                <button type="submit" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-slate-800 transition-all transform active:scale-95 shadow-xl uppercase tracking-widest mt-4">
                     Enviar Inscripción
                 </button>
+                <p class="text-center text-[10px] md:text-xs opacity-60 mt-4">💜💞 Buenas ventas para todos...</p>
             </form>
         </div>
     </div>
 </section>
-    <footer class="bg-slate-900 text-white pt-16 pb-8">
+
+  <footer class="bg-slate-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center md:text-left">
             <div>
                 <h3 class="text-2xl font-black mb-4">COMUNIDAD <span class="text-yellow-comunidad uppercase">Emprendedora</span></h3>
@@ -298,6 +325,7 @@
                     <li><a href="#" class="hover:text-white transition">Inicio</a></li>
                     <li><a href="#seccion-feria" class="hover:text-white transition">Próximos eventos</a></li>
                     <li><a href="#inscripcion" class="hover:text-white transition">Inscripción</a></li>
+                    <li><a href="faq.html" class="hover:text-yellow-comunidad transition font-bold">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
             <div>
@@ -314,56 +342,20 @@
         </div>
     </footer>
 
-    <div id="modal-mapa" class="fixed inset-0 z-[100] hidden items-center justify-center p-2 md:p-4 bg-black/70 backdrop-blur-sm">
-        <div class="bg-white w-full max-w-3xl rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-2xl relative">
-            <button onclick="cerrarMapa()" class="absolute top-4 right-4 z-20 bg-white/90 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition">
-                <i class="fas fa-times text-slate-800"></i>
-            </button>
-            <div class="relative h-[350px] md:h-[450px] bg-slate-50">
-                <div id="map-loader" class="absolute inset-0 flex flex-col items-center justify-center gap-4 z-0">
-                    <div class="w-10 h-10 border-4 border-yellow-comunidad border-t-transparent rounded-full animate-spin"></div>
-                </div>
-                <iframe id="iframe-mapa" src="" class="w-full h-full opacity-0 transition-opacity duration-500 relative z-10" style="border:0;" allowfullscreen="" loading="lazy" onload="quitarLoader()"></iframe>
+<div id="modal-mapa" class="fixed inset-0 z-[200] hidden items-center justify-center p-2 bg-black/70 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-3xl rounded-[1.5rem] overflow-hidden shadow-2xl relative">
+        <button onclick="cerrarMapa()" class="absolute top-4 right-4 z-20 bg-white/90 w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-white">
+            <i class="fas fa-times text-slate-800"></i>
+        </button>
+        <div class="relative h-[350px] md:h-[450px] bg-slate-50">
+            <div id="map-loader" class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                <div class="w-10 h-10 border-4 border-yellow-comunidad border-t-transparent rounded-full animate-spin"></div>
             </div>
-            <div class="p-4 md:p-6 text-center bg-white">
-                <a id="link-google-maps" href="#" target="_blank" class="inline-flex items-center gap-2 text-yellow-600 font-bold text-sm md:text-base hover:underline">
-                    <i class="fas fa-external-link-alt"></i> Abrir en Google Maps
-                </a>
-            </div>
+            <iframe id="iframe-mapa" src="" class="w-full h-full opacity-0 transition-opacity duration-500" style="border:0;" allowfullscreen="" loading="lazy" onload="quitarLoader()"></iframe>
         </div>
     </div>
+</div>
 
-    <script>
-    function abrirMapa(urlEmbed) {
-        const modal = document.getElementById('modal-mapa');
-        const iframe = document.getElementById('iframe-mapa');
-        const loader = document.getElementById('map-loader');
-        const linkExterno = document.getElementById('link-google-maps');
-        iframe.classList.add('opacity-0');
-        loader.classList.remove('hidden');
-        iframe.src = urlEmbed;
-        linkExterno.href = urlEmbed.replace('embed?', 'view?'); 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    }
-    function quitarLoader() {
-        document.getElementById('map-loader').classList.add('hidden');
-        document.getElementById('iframe-mapa').classList.remove('opacity-0');
-    }
-    function cerrarMapa() {
-        const modal = document.getElementById('modal-mapa');
-        document.getElementById('iframe-mapa').src = "";
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-    }
-    window.onclick = function(event) {
-        const modal = document.getElementById('modal-mapa');
-        if (event.target == modal) { cerrarMapa(); }
-    }
-    </script>
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
-
 </html>
