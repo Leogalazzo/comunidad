@@ -79,41 +79,88 @@
 </header>
 
 <section class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-6 text-center max-w-3xl">
-        <div class="mb-6 flex justify-center">
-            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
-                <i class="fas fa-lightbulb text-yellow-500 text-3xl"></i>
+    <div class="container mx-auto px-6 text-center max-w-4xl">
+        <div class="mb-8 flex justify-center">
+            <div class="w-20 h-20 bg-yellow-100 rounded-2xl flex items-center justify-center transform rotate-3 shadow-sm">
+                <i class="fas fa-university text-yellow-600 text-3xl"></i>
             </div>
         </div>
-        <h2 class="text-2xl md:text-3xl font-black mb-6">¿Qué es la Comunidad Emprendedora?</h2>
-        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-       Descripción de qué es
-        </p>
+        
+        <h2 class="text-3xl md:text-4xl font-black mb-8">Programa <span class="text-yellow-500">Comunidad Emprendedora</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left">
+            <div class="space-y-4">
+                <p class="text-slate-700 text-lg leading-relaxed">
+                    Este programa es una iniciativa estratégica impulsada por la **Municipalidad de Villa Ángela**, diseñada para potenciar el talento local y formalizar el crecimiento de nuestros productores.
+                </p>
+                <p class="text-slate-600">
+                    Nuestro objetivo es brindar herramientas de comercialización y visibilidad, creando un ecosistema donde cada proyecto pueda escalar.
+                </p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-3xl border-l-4 border-yellow-comunidad">
+                <h4 class="font-bold text-slate-900 mb-2 uppercase text-xs tracking-widest">Impacto y Destinatarios</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Dirigido a artesanos, gastronómicos y emprendedores con valor agregado de la ciudad. Fortalecemos la economía regional impulsando el empleo genuino y la identidad villangelense en cada feria.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="py-12 md:py-20 bg-slate-50 overflow-hidden">
     <div class="container mx-auto px-6">
         <h2 class="text-2xl md:text-3xl font-black text-center mb-10">Galería de fotos</h2>
-        <div class="relative flex items-center group">
-            <button id="gallery-prev" class="hidden md:flex absolute -left-2 md:left-4 z-10 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
+        
+        <div class="relative flex items-center"> 
+            <button id="gallery-prev" class="hidden md:flex absolute -left-2 md:left-4 z-30 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
                 <i class="fas fa-chevron-left"></i>
             </button>
+
             <div id="gallery-container" class="flex overflow-x-auto gap-4 md:gap-6 pb-6 no-scrollbar snap-x px-2">
+                
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
-                    <img src="foto1.jpeg" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 1">
+                    <div onclick="abrirFoto('foto1.jpeg')" class="relative group cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-md">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-10">
+                            <i class="fas fa-search-plus text-white text-2xl"></i>
+                            <span class="text-white text-[10px] font-black uppercase tracking-widest">Ver foto</span>
+                        </div>
+                        <img src="foto1.jpeg" class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition duration-500" alt="Feria 1">
+                    </div>
                 </div>
+
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
-                    <img src="foto2.jpeg" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 2">
+                    <div onclick="abrirFoto('foto2.jpeg')" class="relative group cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-md">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-10">
+                            <i class="fas fa-search-plus text-white text-2xl"></i>
+                            <span class="text-white text-[10px] font-black uppercase tracking-widest">Ver foto</span>
+                        </div>
+                        <img src="foto2.jpeg" class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition duration-500" alt="Feria 2">
+                    </div>
                 </div>
+
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
-                    <img src="foto3.jpeg" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 3">
+                    <div onclick="abrirFoto('foto3.jpeg')" class="relative group cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-md">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-10">
+                            <i class="fas fa-search-plus text-white text-2xl"></i>
+                            <span class="text-white text-[10px] font-black uppercase tracking-widest">Ver foto</span>
+                        </div>
+                        <img src="foto3.jpeg" class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition duration-500" alt="Feria 3">
+                    </div>
                 </div>
+
                 <div class="flex-none w-[80%] sm:w-[45%] lg:w-[30%] snap-center">
-                    <img src="galeria1.webp" class="rounded-[1.5rem] md:rounded-[2rem] w-full h-[300px] md:h-[400px] object-cover shadow-lg hover:brightness-110 transition" alt="Feria 4">
+                    <div onclick="abrirFoto('galeria1.webp')" class="relative group cursor-pointer overflow-hidden rounded-[1.5rem] md:rounded-[2rem] shadow-md">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-10">
+                            <i class="fas fa-search-plus text-white text-2xl"></i>
+                            <span class="text-white text-[10px] font-black uppercase tracking-widest">Ver foto</span>
+                        </div>
+                        <img src="galeria1.webp" class="w-full h-[300px] md:h-[400px] object-cover transform group-hover:scale-105 transition duration-500" alt="Feria 4">
+                    </div>
                 </div>
+
             </div>
-            <button id="gallery-next" class="hidden md:flex absolute -right-2 md:right-4 z-10 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
+
+            <button id="gallery-next" class="hidden md:flex absolute -right-2 md:right-4 z-30 bg-white/90 w-12 h-12 rounded-full items-center justify-center shadow-xl hover:bg-yellow-comunidad transition active:scale-95">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -121,28 +168,86 @@
     </div>
 </section>
 
-<section id="seccion-feria" class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-6">
-        <h2 class="text-2xl md:text-3xl font-black text-center mb-12">Próximos eventos</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 group">
-                <div class="relative overflow-hidden h-48 md:h-56">
-                    <img src="feria proxima.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Día de Reyes">
-                    <div class="absolute top-4 left-4 bg-yellow-comunidad text-black font-bold px-3 py-1 rounded-lg text-sm shadow-md">Feria</div>
-                </div>
-                <div class="p-6 md:p-8">
-                    <h3 class="font-bold text-xl mb-4">Día de Reyes</h3>
-                    <div class="space-y-3 text-slate-500 text-sm mb-6">
-                        <p><i class="fas fa-calendar-alt text-yellow-500 mr-2 w-5"></i> Domingo 11 de Enero</p>
-                        <p><i class="fas fa-clock text-yellow-500 mr-2 w-5"></i> Desde las 19 horas</p>
-                        <p><i class="fas fa-map-marker-alt text-yellow-500 mr-2 w-5"></i> Parque del Centenario - Villa Ángela - Chaco.</p>
+<section id="seccion-feria" class="py-16 md:py-24 bg-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-100/50 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-slate-100 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-black mb-2">Próximos eventos</h2>
+            <p class="text-slate-400 uppercase tracking-widest text-xs font-bold">¡Agendá las fechas y vení a visitarnos!</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200/50 overflow-hidden border border-slate-100 flex flex-col md:flex-row transition-all hover:shadow-yellow-200/20">
+                
+               <div class="relative w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+    <div onclick="abrirFoto('flyer.png')" class="relative group cursor-pointer w-full h-full">
+        
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 z-20">
+            <i class="fas fa-search-plus text-white text-3xl"></i>
+            <span class="text-white text-[10px] font-black uppercase tracking-widest">Ver flyer completo</span>
+        </div>
+
+        <img src="flyer.png" class="w-full h-full object-cover" alt="Día de Reyes">
+    </div>
+    
+    <div class="absolute top-6 left-6 bg-white rounded-2xl shadow-xl p-3 text-center min-w-[70px] z-10">
+        <p class="text-xs font-black uppercase text-slate-400 leading-none mb-1">Enero</p>
+        <p class="text-3xl font-black text-black leading-none">11</p>
+    </div>
+
+    <div class="absolute bottom-4 left-4 z-10">
+        <span class="bg-yellow-comunidad text-black text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-lg">
+            Próxima Edición
+        </span>
+    </div>
+</div>
+
+                <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="h-1 w-10 bg-yellow-comunidad rounded-full"></div>
+                        <span class="text-yellow-600 font-bold text-xs uppercase tracking-tighter">Domingo</span>
                     </div>
-                    <button onclick="abrirMapa('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.662241517375!2d-60.7135!3d-27.46!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDI3JzM2LjAiUyA2MMKwNDInNDguNiJX!5e0!3m2!1ses-419!2sar!4v1700000000000')" 
-                            class="w-full bg-slate-100 py-3 rounded-xl font-bold text-sm hover:bg-yellow-comunidad transition flex items-center justify-center gap-2">
-                        <i class="fas fa-location-dot"></i> Ver ubicación
-                    </button>
+
+                    <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-6 leading-tight">Feria de verano</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Horario</p>
+                                <p class="text-slate-700 font-bold">Desde las 19:00 hs</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-yellow-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Ubicación</p>
+                                <p class="text-slate-700 font-bold">Parque del Centenario</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="abrirMapa('https://www.google.com/maps/embed?pb=!4v1770624914073!6m8!1m7!1snVmC1-hEN2Ut5HWdaPQsyA!2m2!1d-27.57967986303713!2d-60.71362823075314!3f214.00787135243294!4f-17.146284929057728!5f0.7820865974627469')" 
+                                class="flex-1 bg-black text-white py-4 rounded-2xl font-black text-sm hover:bg-slate-800 transition shadow-xl shadow-black/10 flex items-center justify-center gap-2">
+                            <i class="fas fa-location-dot"></i> Ver ubicación
+                        </button>
+                        <a href="#inscripcion" class="flex-1 bg-yellow-comunidad text-black py-4 rounded-2xl font-black text-sm hover:bg-yellow-500 transition shadow-xl shadow-yellow-200 flex items-center justify-center gap-2 uppercase">
+                            Quiero participar
+                        </a>
+                    </div>
                 </div>
             </div>
+
+            <p class="text-center mt-12 text-slate-400 text-sm italic font-medium">
+                "Una tarde para disfrutar en familia y apoyar lo nuestro."
+            </p>
         </div>
     </div>
 </section>
@@ -248,71 +353,43 @@
         </div>
     </div>
 </section>
-
 <section id="inscripcion" class="py-16 md:py-24 bg-slate-50">
     <div class="container mx-auto px-4 sm:px-6 flex justify-center">
         <div class="bg-yellow-comunidad p-6 md:p-12 rounded-[2.5rem] shadow-2xl w-full max-w-3xl relative overflow-hidden">
             
-            <div class="relative z-10 mb-10 text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-4">¡Inscribite ahora!</h2>
-                <p class="text-black/80 font-medium italic">"Hola a la Comunidad de emprendedores más grande, más bella y copada del Chaco"</p>
+            <div class="relative z-10 mb-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-black mb-2">Súmate a la Comunidad</h2>
+                <p class="text-black/60 font-medium italic text-sm">Postulate para recibir el link de inscripción semanal.</p>
             </div>
 
-            <div class="relative z-10 bg-white/40 backdrop-blur-sm rounded-3xl p-6 mb-10 border border-white/20">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
-                    <div class="bg-white/60 p-3 rounded-2xl">
-                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Armado</p>
-                        <p class="font-black text-lg">17:30 HS</p>
-                    </div>
-                    <div class="bg-black text-white p-3 rounded-2xl shadow-lg transform md:scale-110">
-                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Apertura</p>
-                        <p class="font-black text-lg text-yellow-comunidad">19:00 HS</p>
-                    </div>
-                    <div class="bg-white/60 p-3 rounded-2xl">
-                        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Cierre</p>
-                        <p class="font-black text-lg">22:30 HS</p>
-                    </div>
-                </div>
-
-                <div class="space-y-4 text-sm md:text-base text-slate-900">
-                    <p class="flex gap-3 leading-tight"><i class="fas fa-map-marker-alt mt-1"></i> <strong>Parque del Centenario:</strong> Nos acomodamos por llegada con respeto. ¡Nadie tiene lugar predeterminado!</p>
-                    <p class="flex gap-3 leading-tight"><i class="fas fa-chair mt-1"></i> <strong>Artesanos:</strong> Deben llevar su propia mesa, sillas y todo lo necesario para su stand.</p>
-                    <p class="flex gap-3 leading-tight"><i class="fas fa-bolt mt-1"></i> <strong>Electricidad:</strong> Si necesitás energía, traé un alargue de más de 20 metros (cable taller 4mm).</p>
-                    
-                    <div class="bg-red-500/10 border-l-4 border-red-600 p-3 rounded-r-xl">
-                        <p class="font-bold text-red-900 leading-tight">IMPORTANTE: No se permite reventa de ropa, productos industriales o de cartilla. Buscamos valor agregado propio.</p>
-                    </div>
-
-                    <p class="flex gap-3 leading-tight"><i class="fas fa-utensils mt-1"></i> <strong>Gastronómicos:</strong> Libreta sanitaria al día y medidas de higiene obligatorias. Se controlará este requisito.</p>
-                </div>
-            </div>
+        
             
             <form id="form-inscripcion" class="space-y-4 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="nombre" placeholder="Nombre" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-                    <input type="text" name="apellido" placeholder="Apellido" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                    <input type="text" id="nombre-completo" name="nombre" placeholder="Nombre y Apellido" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition text-sm">
+                    <input type="text" id="nombre-emprendimiento" name="emprendimiento" placeholder="Nombre del emprendimiento" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition text-sm">
                 </div>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="number" name="dni" placeholder="DNI (sin puntos)" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-                    <input type="tel" name="celular" placeholder="Número de celular" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
+                    <input type="tel" id="whatsapp-solicitante" name="celular" placeholder="WhatsApp (Ej: 3735123456)" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition text-sm">
+                    <input type="text" id="instagram-emprendimiento" name="instagram" placeholder="@Instagram del emprendimiento" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition text-sm">
                 </div>
-                <input type="text" name="emprendimiento" placeholder="Nombre del emprendimiento" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none focus:ring-2 focus:ring-black/10 transition">
-                <textarea name="descripcion" placeholder="¿Qué productos o servicios ofreces?" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none h-32 focus:ring-2 focus:ring-black/10 transition"></textarea>
+
+                <textarea id="descripcion-productos" name="descripcion" placeholder="¿Qué productos propios ofrecés?" required class="w-full p-4 rounded-2xl border-none shadow-inner outline-none h-28 focus:ring-2 focus:ring-black/10 transition text-sm"></textarea>
                 
                 <label class="flex items-center gap-3 cursor-pointer p-2">
                     <input type="checkbox" required class="w-5 h-5 accent-black">
-                    <span class="text-xs md:text-sm font-bold opacity-80 uppercase tracking-tighter">He leído y acepto los horarios y requisitos de la feria.</span>
+                    <span class="text-[10px] md:text-xs font-bold opacity-80 uppercase tracking-tighter text-slate-900">Entiendo que mi perfil será revisado antes de ingresar al grupo.</span>
                 </label>
 
-                <button type="submit" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-slate-800 transition-all transform active:scale-95 shadow-xl uppercase tracking-widest mt-4">
-                    Enviar Inscripción
+                <button type="submit" class="w-full bg-black text-white font-bold py-5 rounded-2xl hover:bg-slate-800 transition-all transform active:scale-95 shadow-xl uppercase tracking-widest mt-4 flex items-center justify-center gap-3">
+                    <i class="fab fa-whatsapp text-xl"></i> Enviar Postulación
                 </button>
-                <p class="text-center text-[10px] md:text-xs opacity-60 mt-4">💜💞 Buenas ventas para todos...</p>
+                
             </form>
         </div>
     </div>
 </section>
-
   <footer class="bg-slate-900 text-white pt-16 pb-8">
         <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-center md:text-left">
             <div>
@@ -354,6 +431,33 @@
             <iframe id="iframe-mapa" src="" class="w-full h-full opacity-0 transition-opacity duration-500" style="border:0;" allowfullscreen="" loading="lazy" onload="quitarLoader()"></iframe>
         </div>
     </div>
+</div>
+<div id="modal-foto" class="fixed inset-0 z-[250] hidden items-center justify-center p-4 bg-black/95 backdrop-blur-sm transition-all duration-300">
+    
+    <button onclick="cerrarFoto()" class="absolute top-6 right-6 z-[260] bg-white/10 hover:bg-yellow-comunidad hover:text-black text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-xl">
+        <i class="fas fa-times text-xl"></i>
+    </button>
+
+    <button onclick="cambiarFoto(-1)" class="absolute left-4 z-[260] text-white/50 hover:text-yellow-comunidad text-4xl p-4 transition-colors">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="max-w-5xl w-full h-full flex flex-col items-center justify-center p-2">
+        <img id="img-ampliada" src="" class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-all duration-300">
+        
+        <div id="caption-foto" class="mt-6 text-center">
+    <p class="text-white font-black text-lg md:text-xl uppercase tracking-widest flex items-center justify-center">
+        <span>Comunidad <span class="text-yellow-comunidad">Emprendedora</span></span>
+        
+        <img src="foco-nuevo-rem.png" alt="Foco" class="ml-3 h-8 w-auto object-contain">
+        
+    </p>
+    <p class="text-white/40 text-[10px] uppercase mt-1 tracking-widest">Villa Ángela - Chaco</p>
+</div>
+
+    <button onclick="cambiarFoto(1)" class="absolute right-4 z-[260] text-white/50 hover:text-yellow-comunidad text-4xl p-4 transition-colors">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 </div>
 
 <script src="app.js"></script>
