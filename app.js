@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. LÓGICA DEL BOTÓN SCROLL TOP
-    // Aparece cuando el usuario baja 400px y lo lleva al inicio suavemente.
     const scrollTopBtn = document.getElementById('scroll-top-btn');
     if (scrollTopBtn) {
         window.addEventListener('scroll', () => {
@@ -15,12 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. CARRUSEL INFINITO Y FLUIDO (EMPRENDEDORES)
-    // Duplica el contenido y se mueve permanentemente hacia la izquierda.
     const container = document.getElementById('carousel-container');
     if (container) {
-        container.innerHTML += container.innerHTML; // Duplicamos para el bucle infinito
+        container.innerHTML += container.innerHTML; 
         let scrollPos = 0;
-        const speed = 0.5; // Ajusta para cambiar la velocidad
+        const speed = 0.5; 
 
         function autoScroll() {
             scrollPos += speed;
@@ -34,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3. LÓGICA DE PREGUNTAS FRECUENTES (FAQ ACCORDION)
-    // Controla la apertura y cierre de las respuestas en faq.html.
     document.querySelectorAll('.faq-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.parentElement;
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. FUNCIONAMIENTO DE LOS BOTONES DEL BANNER (HERO)
-    // Desplazamiento suave a las secciones de Villa Ángela.
     const btnParticipar = document.getElementById('btn-participar');
     const btnFeria = document.getElementById('btn-feria');
 
@@ -59,22 +55,44 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 5. MANEJO DEL FORMULARIO DE INSCRIPCIÓN
-    // Captura los datos de los emprendedores locales.
+    // 5. MANEJO DE LA POSTULACIÓN (REDIRIGE A WHATSAPP)
+    // Ahora configurado como Solicitud de Admisión para filtrar nuevos emprendedores.
     const form = document.getElementById('form-inscripcion');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(form);
-            const datos = Object.fromEntries(formData.entries());
-            console.log("Inscripción recibida:", datos);
-            alert("¡Excelente! Tus datos han sido enviados. El equipo de Comunidad Emprendedora se pondrá en contacto pronto.");
+
+            // Captura de datos usando los nuevos IDs del formulario de admisión
+            const nombre = document.getElementById('nombre-completo').value;
+            const emprendimiento = document.getElementById('nombre-emprendimiento').value;
+            const celular = document.getElementById('whatsapp-solicitante').value;
+            const instagram = document.getElementById('instagram-emprendimiento').value;
+            const productos = document.getElementById('descripcion-productos').value;
+
+            // NÚMERO DEL COORDINADOR (Cambialo por el real aquí)
+            const nroCoordinador = "5493735000000"; 
+
+            // Construcción del mensaje para WhatsApp
+            const mensaje = `*SOLICITUD DE ADMISIÓN - WEB*%0A` +
+                            `----------------------------%0A` +
+                            `👤 *Nombre:* ${nombre}%0A` +
+                            `🚀 *Emprendimiento:* ${emprendimiento}%0A` +
+                            `📱 *WhatsApp:* ${celular}%0A` +
+                            `📸 *Instagram:* ${instagram}%0A` +
+                            `📝 *Productos:* ${productos}`;
+
+            // URL de WhatsApp y redirección
+            const urlWa = `https://wa.me/${nroCoordinador}?text=${mensaje}`;
+            
+            // Abrir en pestaña nueva
+            window.open(urlWa, '_blank');
+
+            alert("¡Gracias por postularte! Se abrirá WhatsApp para que envíes tu información al equipo coordinador.");
             form.reset();
         });
     }
 
     // 6. EFECTO DE REVELACIÓN AL HACER SCROLL
-    // Animación de entrada para todas las secciones.
     const revealOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -107,8 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 8. FUNCIONES GLOBALES PARA EL MODAL DEL MAPA
-// Movidas fuera del DOMContentLoaded para que el atributo 'onclick' de HTML pueda encontrarlas.
-
 function abrirMapa(urlEmbed) {
     const modal = document.getElementById('modal-mapa');
     const iframe = document.getElementById('iframe-mapa');
@@ -146,10 +162,94 @@ function cerrarMapa() {
     }
 }
 
-// Cerrar modal al hacer clic fuera del contenido
 window.onclick = function(event) {
     const modal = document.getElementById('modal-mapa');
     if (event.target == modal) {
         cerrarMapa();
     }
 }
+
+// 9. LÓGICA PARA EL MODAL DE FOTOS CON NAVEGACIÓN
+let imagenesGaleria = [];
+let indiceActual = 0;
+
+// Al cargar el DOM, detectamos todas las fotos disponibles en la galería
+document.addEventListener('DOMContentLoaded', () => {
+    const imagenesHTML = document.querySelectorAll('#gallery-container img');
+    imagenesGaleria = Array.from(imagenesHTML).map(img => img.getAttribute('src'));
+});
+
+// Ajuste en la función abrirFoto para manejar imágenes fuera de la galería
+function abrirFoto(src) {
+    const modal = document.getElementById('modal-foto');
+    const img = document.getElementById('img-ampliada');
+    
+    if (modal && img) {
+        // Buscamos si la imagen está en la galería para habilitar flechas
+        const index = imagenesGaleria.indexOf(src);
+        indiceActual = index !== -1 ? index : 0; 
+        
+        img.src = src;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        // Opcional: Ocultar flechas si la imagen no es parte de la galería
+        const flechas = modal.querySelectorAll('button[onclick^="cambiarFoto"]');
+        flechas.forEach(f => f.style.display = index === -1 ? 'none' : 'block');
+    }
+}
+function cambiarFoto(direccion) {
+    const img = document.getElementById('img-ampliada');
+    const caption = document.getElementById('caption-foto'); // Seleccionamos el texto
+    
+    indiceActual += direccion;
+    
+    if (indiceActual < 0) {
+        indiceActual = imagenesGaleria.length - 1;
+    } else if (indiceActual >= imagenesGaleria.length) {
+        indiceActual = 0;
+    }
+    
+    // Efecto de transición para imagen y texto
+    img.style.opacity = '0';
+    caption.style.opacity = '0';
+    caption.style.transform = 'translateY(10px)';
+
+    setTimeout(() => {
+        img.src = imagenesGaleria[indiceActual];
+        img.style.opacity = '1';
+        
+        // El texto aparece con un leve movimiento hacia arriba
+        caption.style.opacity = '1';
+        caption.style.transform = 'translateY(0)';
+        caption.style.transition = 'all 0.4s ease';
+    }, 150);
+}
+
+function cerrarFoto() {
+    const modal = document.getElementById('modal-foto');
+    const img = document.getElementById('img-ampliada');
+    
+    if (modal && img) {
+        img.classList.remove('scale-100');
+        img.classList.add('scale-95');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            img.src = "";
+        }, 200);
+    }
+}
+
+// Control por teclado (Esc, Flechas Izquierda y Derecha)
+window.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('modal-foto');
+    if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === "Escape") cerrarFoto();
+        if (e.key === "ArrowRight") cambiarFoto(1);
+        if (e.key === "ArrowLeft") cambiarFoto(-1);
+    }
+});
